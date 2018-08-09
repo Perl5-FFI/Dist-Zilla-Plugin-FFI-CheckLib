@@ -140,7 +140,7 @@ In your F<dist.ini>:
 =head1 DESCRIPTION
 
 This is a L<Dist::Zilla> plugin that modifies the F<Makefile.PL> or
-F<Build.PL> in your distribution to check for a dynamic library L<FFI::Raw> (or
+F<Build.PL> in your distribution to check for a dynamic library L<FFI::Platypus> (or
 similar) can access; uses L<FFI::CheckLib> to perform the check.
 
 If the library is not available, the program exits with a status of zero,

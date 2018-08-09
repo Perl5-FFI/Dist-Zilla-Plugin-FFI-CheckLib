@@ -12,7 +12,7 @@ In your `dist.ini`:
 # DESCRIPTION
 
 This is a [Dist::Zilla](https://metacpan.org/pod/Dist::Zilla) plugin that modifies the `Makefile.PL` or
-`Build.PL` in your distribution to check for a dynamic library [FFI::Raw](https://metacpan.org/pod/FFI::Raw) (or
+`Build.PL` in your distribution to check for a dynamic library [FFI::Platypus](https://metacpan.org/pod/FFI::Platypus) (or
 similar) can access; uses [FFI::CheckLib](https://metacpan.org/pod/FFI::CheckLib) to perform the check.
 
 If the library is not available, the program exits with a status of zero,
