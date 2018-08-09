@@ -82,21 +82,8 @@ foreach my $test (@tests)
     );
 
     is(
-        $tzil->distmeta,
-        hash {
-            field prereqs => hash {
-                field configure => hash {
-                    field requires => hash {
-                        field 'FFI::CheckLib' => '0.11';
-                         etc;
-                    };
-                    etc;
-                };
-                etc;
-            };
-            etc;
-        },
-        'prereqs are properly injected for the configure phase',
+        $tzil->distmeta->{prereqs}->{configure}->{requires}->{'FFI::CheckLib'},
+        '0.11',
     );
 
     #diag 'got log messages: ', explain $tzil->log_messages
