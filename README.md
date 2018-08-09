@@ -59,10 +59,11 @@ Defaults to false.
 - [Devel::CheckLib](https://metacpan.org/pod/Devel::CheckLib) and [Dist::Zilla::Plugin::CheckLib](https://metacpan.org/pod/Dist::Zilla::Plugin::CheckLib)
 - [Devel::AssertOS](https://metacpan.org/pod/Devel::AssertOS) and [Dist::Zilla::Plugin::AssertOS](https://metacpan.org/pod/Dist::Zilla::Plugin::AssertOS)
 
-# AUTHORS
+# AUTHOR
 
-- Jon Portnoy <avenj@cobaltirc.org>
-- Graham Ollis <plicease@cpan.org>
+Original author: Jon Portnoy
+
+Current maintainer: Graham Ollis <plicease@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
