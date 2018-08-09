@@ -1,8 +1,5 @@
-use strict;
-use warnings;
-use Test::More;
+use Test2::V0 -no_srand => 1;
 use Test::DZil;
-use Test::Deep;
 use Dist::Zilla::Plugin::FFI::CheckLib;
 use Path::Tiny;
 
@@ -36,8 +33,8 @@ foreach my $test (@tests)
 
     if($test->{name} eq 'MBT')
     {
-      plan skip_all => 'Test requires Dist::Zilla::Plugin::ModuleBuildTiny 0.07'
-        unless eval { require Dist::Zilla::Plugin::ModuleBuildTiny; Dist::Zilla::Plugin::ModuleBuildTiny->VERSION(0.007) };
+        skip_all 'Test requires Dist::Zilla::Plugin::ModuleBuildTiny 0.07'
+            unless eval { require Dist::Zilla::Plugin::ModuleBuildTiny; Dist::Zilla::Plugin::ModuleBuildTiny->VERSION(0.007) };
     }
 
     
@@ -84,41 +81,26 @@ foreach my $test (@tests)
         "code inserted into @{[ $test->{script_PL} ]}",
     );
 
-    cmp_deeply(
+    is(
         $tzil->distmeta,
-        superhashof({
-            prereqs => superhashof({
-                configure => {
-                    requires => {
-                        'FFI::CheckLib' => '0.11',
-                        $test->{installer} => ignore,    # populated by [installer]
-                    },
-                },
-            }),
-            x_Dist_Zilla => superhashof({
-                plugins => supersetof(
-                    {
-                        class => 'Dist::Zilla::Plugin::FFI::CheckLib',
-                        config => {
-                            'Dist::Zilla::Plugin::FFI::CheckLib' => superhashof({
-                                lib => [ 'iconv', 'jpeg' ],
-                                libpath => [ 'additional_path' ],
-                                symbol => [ 'foo', 'bar' ],
-                                systempath => [ 'system' ],
-                                recursive => 1,
-                            }),
-                        },
-                        name => 'FFI::CheckLib',
-                        version => ignore,
-                    },
-                ),
-            }),
-        }),
+        hash {
+            field prereqs => hash {
+                field configure => hash {
+                    field requires => hash {
+                        field 'FFI::CheckLib' => '0.11';
+                         etc;
+                    };
+                    etc;
+                };
+                etc;
+            };
+            etc;
+        },
         'prereqs are properly injected for the configure phase',
-    ) or diag 'got distmeta: ', explain $tzil->distmeta;
-    
-    diag 'got log messages: ', explain $tzil->log_messages
-        if not Test::Builder->new->is_passing;
+    );
+
+    #diag 'got log messages: ', explain $tzil->log_messages
+    #    if not Test::Builder->new->is_passing;
   }
 }
 
