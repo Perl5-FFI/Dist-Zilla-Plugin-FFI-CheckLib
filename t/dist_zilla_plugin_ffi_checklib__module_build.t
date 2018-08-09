@@ -1,10 +1,10 @@
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 
 # Ported from Dist::Zilla::Plugin::CheckLib (C) 2014 Karen Etheridge
 
 use Path::Tiny;
-my $code = path('t', 'basic.t')->slurp_utf8;
+my $code = path('t', 'dist_zilla_plugin_ffi_checklib.t')->slurp_utf8;
 
 $code =~ s/'MakeMaker'/'ModuleBuild'/g;
 $code =~ s/ExtUtils::MakeMaker/Module::Build/g;

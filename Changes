@@ -1,4 +1,10 @@
-Revision history for Perl module Dist-Zilla-Plugin-FFI-CheckLib
+Revision history for Perl module {{$dist->name}}
+
+{{$NEXT}}
+  - New maintainer from the developer who brought you FFI::Platypus and
+    FFI::CheckLib (PLICEASE)
+  - Future version of this module will likely be merged into
+    Dist-Zilla-Plugin-FFI, which requires Perl 5.14 and Dist::Zilla 6.
 
 0.002001 2015-03-21
 

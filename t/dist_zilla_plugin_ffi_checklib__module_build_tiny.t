@@ -1,12 +1,12 @@
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 
 # Ported from Dist::Zilla::Plugin::CheckLib (C) 2014 Karen Etheridge
 
 use Test::Requires { 'Dist::Zilla::Plugin::ModuleBuildTiny' => '0.007' };
 
 use Path::Tiny;
-my $code = path('t', 'basic.t')->slurp_utf8;
+my $code = path('t', 'dist_zilla_plugin_ffi_checklib.t')->slurp_utf8;
 
 $code =~ s/'MakeMaker'/'ModuleBuildTiny'/g;
 $code =~ s/ExtUtils::MakeMaker/Module::Build::Tiny/g;

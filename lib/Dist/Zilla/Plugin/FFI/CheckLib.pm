@@ -1,6 +1,10 @@
 package Dist::Zilla::Plugin::FFI::CheckLib;
 
-use strict; use warnings;
+use strict;
+use warnings;
+
+# ABSTRACT: FFI::CheckLib alternative to Dist::Zilla::Plugin::CheckLib
+# VERSION
 
 use Moose;
 with
@@ -126,14 +130,6 @@ sub _munge_file {
 
 __PACKAGE__->meta->make_immutable;
 
-__END__
-
-=pod
-
-=head1 NAME
-
-Dist::Zilla::Plugin::FFI::CheckLib - FFI::CheckLib alternative to Dist::Zilla::Plugin::CheckLib
-
 =head1 SYNOPSIS
 
 In your F<dist.ini>:
@@ -152,8 +148,6 @@ which will result in a NA result on a CPAN test reporter.
 
 Derived from L<Dist::Zilla::Plugin::CheckLib> (see L</AUTHOR>) -- look there
 for non-FFI applications.
-
-=for Pod::Coverage mvp_multivalue_args register_prereqs munge_files setup_installer
 
 =head1 CONFIGURATION OPTIONS
 
@@ -204,15 +198,5 @@ L<Devel::CheckLib> and L<Dist::Zilla::Plugin::CheckLib>
 L<Devel::AssertOS> and L<Dist::Zilla::Plugin::AssertOS>
 
 =back
-
-=head1 AUTHOR
-
-Ported to L<FFI::CheckLib> by Jon Portnoy <avenj@cobaltirc.org>
-
-This module is adapted directly from L<Dist::Zilla::Plugin::CheckLib>,
-copyright (c) 2014 by Karen Etheridge (CPAN: ETHER).
-
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
 
 =cut
