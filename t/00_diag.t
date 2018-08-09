@@ -22,7 +22,6 @@ $modules{$_} = $_ for qw(
   Test::Deep
   Test::Fatal
   Test::More
-  Test::Requires
   namespace::autoclean
 );
 

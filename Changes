@@ -5,6 +5,8 @@ Revision history for Perl module {{$dist->name}}
     FFI::CheckLib (PLICEASE)
   - Future version of this module will likely be merged into
     Dist-Zilla-Plugin-FFI, which requires Perl 5.14 and Dist::Zilla 6.
+  - New home in the Perl5-FFI GitHub org:
+    https://github.com/Perl5-FFI/Dist-Zilla-Plugin-FFI-CheckLib
 
 0.002001 2015-03-21
 
