@@ -20,7 +20,6 @@ $modules{$_} = $_ for qw(
   Path::Tiny
   Test::DZil
   Test::Deep
-  Test::Fatal
   Test::More
   namespace::autoclean
 );

@@ -3,7 +3,6 @@ use warnings;
 use Test::More;
 use Test::DZil;
 use Test::Deep;
-use Test::Fatal;
 use Dist::Zilla::Plugin::FFI::CheckLib;
 use Path::Tiny;
 
@@ -46,7 +45,7 @@ foreach my $test (@tests)
         { dist_root => 't/does-not-exist' },
         {
             add_files => {
-                path(qw(source dist.ini)) => simple_ini(
+                'source/dist.ini' => simple_ini(
                     [ 'GatherDir' ],
                     [ 'MetaConfig' ],
                     [ $test->{dzil_installer} ],
@@ -59,15 +58,16 @@ foreach my $test (@tests)
                         },
                     ],
                 ),
-                path(qw(source lib Foo.pm)) => "package Foo;\n1;\n",
+                'source/lib/Foo.pm' => "package Foo;\n1;\n",
             },
         },
     );
 
     $tzil->chrome->logger->set_debug(1);
+    eval { $tzil->build };
     is(
-        exception { $tzil->build },
-        undef,
+        $@,
+        '',
         'nothing exploded',
     );
 
