@@ -18,8 +18,8 @@ similar) can access; uses [FFI::CheckLib](https://metacpan.org/pod/FFI::CheckLib
 If the library is not available, the program exits with a status of zero,
 which will result in a NA result on a CPAN test reporter.
 
-Derived from [Dist::Zilla::Plugin::CheckLib](https://metacpan.org/pod/Dist::Zilla::Plugin::CheckLib) (see ["AUTHOR"](#author)) -- look there
-for non-FFI applications.
+This module is adapted directly from Dist::Zilla::Plugin::CheckLib, copyright (c) 2014 by Karen Etheridge (CPAN: ETHER).
+Look there for XS modules.
 
 # CONFIGURATION OPTIONS
 

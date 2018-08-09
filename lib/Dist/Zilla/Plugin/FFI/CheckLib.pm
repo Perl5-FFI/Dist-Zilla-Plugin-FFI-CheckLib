@@ -134,8 +134,8 @@ __PACKAGE__->meta->make_immutable;
 
 In your F<dist.ini>:
 
-    [FFI::CheckLib]
-    lib = zmq
+ [FFI::CheckLib]
+ lib = zmq
 
 =head1 DESCRIPTION
 
@@ -146,8 +146,9 @@ similar) can access; uses L<FFI::CheckLib> to perform the check.
 If the library is not available, the program exits with a status of zero,
 which will result in a NA result on a CPAN test reporter.
 
-Derived from L<Dist::Zilla::Plugin::CheckLib> (see L</AUTHOR>) -- look there
-for non-FFI applications.
+This module is adapted directly from Dist::Zilla::Plugin::CheckLib, copyright (c) 2014 by Karen Etheridge (CPAN: ETHER).
+Look there for XS modules.
+
 
 =head1 CONFIGURATION OPTIONS
 
