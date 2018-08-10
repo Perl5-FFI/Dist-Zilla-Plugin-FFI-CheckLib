@@ -18,11 +18,15 @@ use warnings;
 # inserted by Dist::Zilla::Plugin::FFI::CheckLib @{[ Dist::Zilla::Plugin::FFI::CheckLib->VERSION || '<self>' ]}
 use FFI::CheckLib;
 check_lib_or_exit(
-    lib => [ 'iconv', 'jpeg' ],
-    libpath => 'additional_path',
-    symbol => [ 'foo', 'bar' ],
-    systempath => 'system',
-    recursive => '1',
+  lib => [ 'iconv', 'jpeg' ],
+  libpath => 'additional_path',
+  symbol => [ 'foo', 'bar' ],
+  systempath => 'system',
+  recursive => '1',
+  verify => sub {
+    my(\$name, \$libpath) = \@_;
+    1;
+  },
 );
 PATTERN
 
@@ -52,6 +56,10 @@ foreach my $test (@tests)
                             symbol => [ qw(foo bar) ],
                             systempath => 'system',
                             recursive => 1,
+                            verify => [
+                              '|my($name, $libpath) = @_;',
+                              '|1;',
+                            ],
                         },
                     ],
                 ),

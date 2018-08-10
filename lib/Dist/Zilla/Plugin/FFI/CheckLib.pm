@@ -20,6 +20,7 @@ my @list_options = qw/
   libpath
   symbol
   systempath
+  verify
 /;
 sub mvp_multivalue_args { @list_options }
 
@@ -114,7 +115,9 @@ sub _munge_file {
       [ 
         $_ => @stuff > 1 ? ('[ ' . join(', ', @stuff) . ' ]') : $stuff[0]
       ] : ()
-  } @list_options, ( $self->recursive ? 'recursive' : () );
+  } grep !/^verify$/, @list_options, ( $self->recursive ? 'recursive' : () );
+
+  my @verify = map { s/^\|//; $_ } $self->verify;
 
   $file->content(
       substr($orig_content, 0, $pos)
@@ -122,7 +125,8 @@ sub _munge_file {
     . ' ' . ($self->VERSION || '<self>') . "\n"
     . "use FFI::CheckLib;\n"
     . "check_lib_or_exit(\n"
-    . join('', map {; ' 'x4 . $_->[0] . ' => ' . $_->[1] . ",\n" } @options )
+    . join('', map {; ' 'x2 . $_->[0] . ' => ' . $_->[1] . ",\n" } @options )
+    . (@verify ? join("\n", map { ' 'x2 . $_ } 'verify => sub {', (map { ' 'x2 . $_ } @verify), '},')."\n" : '')
     . ");\n\n"
     . substr($orig_content, $pos)
   );
@@ -181,6 +185,24 @@ If set to true, directories specified in C<libpath> will be searched
 recursively.
 
 Defaults to false.
+
+=head2 C<verify>
+
+The verify function body to use.  For each usage, is one line of the function
+body.  You can prefix with the pipe C<|> character to get proper indentation.
+
+ verify = | my($name, $libpath) = @_;
+ verify = | my $ffi = FFI::Platypus->new;
+ verify = | $ffi->lib($libpath);
+ verify = | my $f = $ffi->function('foo_version', [] => 'int');
+ verify = | if($f) {
+ verify = |   return $f->call() >= 500; # we accept version 500 or better
+ verify = | } else {
+ verify = |   return;
+ verify = | }
+
+If you use any modules, such as L<FFI::Platypus> in this example, be sure that
+you declare them as configure requires.
 
 =head1 SEE ALSO
 

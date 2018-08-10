@@ -53,6 +53,24 @@ recursively.
 
 Defaults to false.
 
+## `verify`
+
+The verify function body to use.  For each usage, is one line of the function
+body.  You can prefix with the pipe `|` character to get proper indentation.
+
+    verify = | my($name, $libpath) = @_;
+    verify = | my $ffi = FFI::Platypus->new;
+    verify = | $ffi->lib($libpath);
+    verify = | my $f = $ffi->function('foo_version', [] => 'int');
+    verify = | if($f) {
+    verify = |   return $f->call() >= 500; # we accept version 500 or better
+    verify = | } else {
+    verify = |   return;
+    verify = | }
+
+If you use any modules, such as [FFI::Platypus](https://metacpan.org/pod/FFI::Platypus) in this example, be sure that
+you declare them as configure requires.
+
 # SEE ALSO
 
 - [FFI::CheckLib](https://metacpan.org/pod/FFI::CheckLib)
