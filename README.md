@@ -11,7 +11,7 @@ In your `dist.ini`:
 
 # DESCRIPTION
 
-\*\*NOTE\*\*: This module has been merged into \`Dist-Zilla-Plugin-FFI\` and this
+**NOTE**: This module has been merged into `Dist-Zilla-Plugin-FFI` and this
 repository is no longer used for development.
 
 This is a [Dist::Zilla](https://metacpan.org/pod/Dist::Zilla) plugin that modifies the `Makefile.PL` or

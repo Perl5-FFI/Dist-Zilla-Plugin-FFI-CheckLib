@@ -143,7 +143,7 @@ In your F<dist.ini>:
 
 =head1 DESCRIPTION
 
-**NOTE**: This module has been merged into `Dist-Zilla-Plugin-FFI` and this
+B<NOTE>: This module has been merged into C<Dist-Zilla-Plugin-FFI> and this
 repository is no longer used for development.
 
 This is a L<Dist::Zilla> plugin that modifies the F<Makefile.PL> or
