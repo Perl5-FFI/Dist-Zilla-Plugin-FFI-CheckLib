@@ -143,6 +143,9 @@ In your F<dist.ini>:
 
 =head1 DESCRIPTION
 
+**NOTE**: This module has been merged into `Dist-Zilla-Plugin-FFI` and this
+repository is no longer used for development.
+
 This is a L<Dist::Zilla> plugin that modifies the F<Makefile.PL> or
 F<Build.PL> in your distribution to check for a dynamic library L<FFI::Platypus> (or
 similar) can access; uses L<FFI::CheckLib> to perform the check.

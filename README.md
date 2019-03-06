@@ -11,6 +11,9 @@ In your `dist.ini`:
 
 # DESCRIPTION
 
+\*\*NOTE\*\*: This module has been merged into \`Dist-Zilla-Plugin-FFI\` and this
+repository is no longer used for development.
+
 This is a [Dist::Zilla](https://metacpan.org/pod/Dist::Zilla) plugin that modifies the `Makefile.PL` or
 `Build.PL` in your distribution to check for a dynamic library [FFI::Platypus](https://metacpan.org/pod/FFI::Platypus) (or
 similar) can access; uses [FFI::CheckLib](https://metacpan.org/pod/FFI::CheckLib) to perform the check.
